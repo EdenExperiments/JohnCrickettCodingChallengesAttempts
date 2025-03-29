@@ -1,0 +1,20 @@
+﻿# Ignore build output
+bin/
+obj/
+nupkg/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+
+# NuGet packages
+*.nupkg
+*.snupkg
+
+# Logs
+*.log
+
+# Others
+_ReSharper*/
+*.DotSettings.user
