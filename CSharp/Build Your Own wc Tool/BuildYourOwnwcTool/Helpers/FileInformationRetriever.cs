@@ -1,4 +1,4 @@
-﻿namespace BuildYourOwnwcTool.Helpers;
+﻿namespace CCWC.Helpers;
 
 internal static class FileInformationRetriever
 {
