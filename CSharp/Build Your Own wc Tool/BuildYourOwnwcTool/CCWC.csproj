@@ -11,8 +11,4 @@
 		<AssemblyName>ccwc</AssemblyName>
 	</PropertyGroup>
 
-	<ItemGroup>
-	  <Compile Include="README.md" />
-	</ItemGroup>
-
 </Project>

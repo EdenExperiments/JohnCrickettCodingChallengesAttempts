@@ -2,42 +2,38 @@
 
 if (args.Length == 1 && args[0] == "--help")
 {
-    Utilities.PrintHelp();
+    Utilities.WriteHelpText();
 }
 else if (args.Length == 1 && File.Exists(args[0]))
 {
-    //Would be best if i could just read the file contents once and pass it through each one
-    //rather than the file path.
-    /*
-    I've looked at a few methods of doing this now, and very new from what i'm using too. Will be giving an attempt shortly one attempt altered results.
-    */
     var filePath = args[0];
-    var numberOfBytes = FileInformationRetriever.GetByteCount(filePath);
-    var numberOfLines = FileInformationRetriever.GetLineCount(filePath);
-    var numberOfWords = FileInformationRetriever.GetWordCount(filePath);
+    var fileBytes = File.ReadAllBytes(filePath);
+    var fileText = System.Text.Encoding.UTF8.GetString(fileBytes);
+    var numberOfBytes = FileInformationRetriever.GetByteCount(fileBytes);
+    var numberOfLines = FileInformationRetriever.GetLineCount(fileText);
+    var numberOfWords = FileInformationRetriever.GetWordCount(fileText);
 
     Console.WriteLine($"{numberOfBytes} {numberOfLines} {numberOfWords} {filePath}");
 }
 else if (args.Length == 2 && File.Exists(args[1]))
 {
     var filePath = args[1];
+    var fileBytes = File.ReadAllBytes(filePath);
+    var fileText = System.Text.Encoding.UTF8.GetString(fileBytes);
+
     switch (args[0])
     {
         case "-c":
-            var numberOfBytes = FileInformationRetriever.GetByteCount(filePath);
-            Console.WriteLine($"{numberOfBytes} {filePath}");
+            Console.WriteLine($"{FileInformationRetriever.GetByteCount(fileBytes)} {filePath}");
             break;
         case "-l":
-            var numberOfLines = FileInformationRetriever.GetLineCount(filePath);
-            Console.WriteLine($"{numberOfLines} {filePath}");
+            Console.WriteLine($"{FileInformationRetriever.GetLineCount(fileText)} {filePath}");
             break;
         case "-w":
-            var numberOfWords = FileInformationRetriever.GetWordCount(filePath);
-            Console.WriteLine($"{numberOfWords} {filePath}");
+            Console.WriteLine($"{FileInformationRetriever.GetWordCount(fileText)} {filePath}");
             break;
         case "-m":
-            var numberOfChars = FileInformationRetriever.GetCharacterCount(filePath);
-            Console.WriteLine($"{numberOfChars} {filePath}");
+            Console.WriteLine($"{FileInformationRetriever.GetCharacterCount(fileText)} {filePath}");
             break;
         default:
             throw new ArgumentException("Invalid argument passed into ccwc");

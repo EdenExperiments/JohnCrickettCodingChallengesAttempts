@@ -2,7 +2,7 @@
 {
     internal static class Utilities
     {
-        internal static void PrintHelp()
+        internal static void WriteHelpText()
         {
             Console.WriteLine(@"
 Usage: ccwc [option] <file>
