@@ -34,6 +34,7 @@ The goal is to improve both my **coding ability** and **prompting skills** — I
 - ReSharper
 - Git & GitHub
 - (Sometimes) Neovim + CLI tools for experimentation
+- Long term I wish to Learn Rust + Neovim tooling and will use C# solutions as a basis to refactor into Rust Solutions for practice
 
 ---
 
