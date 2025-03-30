@@ -7,7 +7,10 @@ if (args.Length == 1 && args[0] == "--help")
 else if (args.Length == 1 && File.Exists(args[0]))
 {
     //Would be best if i could just read the file contents once and pass it through each one
-    //rather than the file path
+    //rather than the file path.
+    /*
+    I've looked at a few methods of doing this now, and very new from what i'm using too. Will be giving an attempt shortly one attempt altered results.
+    */
     var filePath = args[0];
     var numberOfBytes = FileInformationRetriever.GetByteCount(filePath);
     var numberOfLines = FileInformationRetriever.GetLineCount(filePath);
