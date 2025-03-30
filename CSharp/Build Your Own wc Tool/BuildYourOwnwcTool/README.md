@@ -2,7 +2,7 @@
 
 A simple, cross-platform recreation of the Unix `wc` (word count) utility built in C# using .NET.
 
-    This command-line tool lets you count the number of **lines**, **words**, **characters**, and **bytes** in a file – with similar functionality and flags to the original `wc`.
+This command-line tool lets you count the number of **lines**, **words**, **characters**, and **bytes** in a file – with similar functionality and flags to the original `wc`.
 
 ---
 
