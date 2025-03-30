@@ -20,9 +20,8 @@ This command-line tool lets you count the number of **lines**, **words**, **char
 
 ### 1. Package the project
 
-    Run the following command from the project root:
+Run the following command from the project root:
 
-    ```bash
     dotnet pack -c Release
 
 ### 2. Make available globally in the terminal 
