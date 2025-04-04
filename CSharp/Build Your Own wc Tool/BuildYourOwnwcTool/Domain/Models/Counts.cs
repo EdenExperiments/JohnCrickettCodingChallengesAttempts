@@ -1,6 +1,6 @@
 ﻿namespace CCWC.Domain.Models;
 
-public class Count(string filePath)
+public class Counts(string filePath)
 {
     internal long C { get; init; } = new FileInfo(filePath).Length;
     internal long L { get; set; } = 0;

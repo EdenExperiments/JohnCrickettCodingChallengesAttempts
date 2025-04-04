@@ -38,7 +38,7 @@ When no option is provided, ccwc prints -c -l -w <file>
 
     internal static bool IsFlagValid(string flag)
     {
-        var type = typeof(Count);
+        var type = typeof(Counts);
 
         var fieldInfo = type.GetProperty(flag.TrimStart('-').ToUpper(), BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
         return fieldInfo != null;
@@ -49,7 +49,7 @@ When no option is provided, ccwc prints -c -l -w <file>
         return flag.TrimStart('-').ToUpper();
     }
 
-    internal static void WriteResult(Count counts, string key, string filePath)
+    internal static void WriteResult(Counts counts, string key, string filePath)
     {
         var property = counts.GetType().GetProperty(key,
             BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);

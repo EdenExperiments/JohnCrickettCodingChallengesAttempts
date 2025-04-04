@@ -5,7 +5,7 @@ namespace CCWC.Application.Strategies;
 
 public class LineCountStrategy : ICountStrategy
 {
-    public void Count(string line, Count counts)
+    public void Count(string line, Counts counts)
     {
         counts.L += 1;
     }

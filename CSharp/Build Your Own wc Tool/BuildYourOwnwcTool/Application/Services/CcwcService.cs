@@ -9,7 +9,7 @@ public static class CcwcService
 {
     public static void ProcessDefaultFlags(string filePath)
     {
-        var count = new Count(filePath);
+        var counts = new Counts(filePath);
         var lineStrategy = new LineCountStrategy();
         var wordStrategy = new WordCountStrategy();
         var charStrategy = new CharacterCountStrategy();
@@ -18,21 +18,21 @@ public static class CcwcService
         string? line;
         while ((line = reader.ReadLine()) != null)
         {
-            lineStrategy.Count(line, count);
-            wordStrategy.Count(line, count);
-            charStrategy.Count(line, count);
+            lineStrategy.Count(line, counts);
+            wordStrategy.Count(line, counts);
+            charStrategy.Count(line, counts);
         }
 
-        Console.WriteLine($"{count.C} {count.L} {count.W} {filePath}");
+        Console.WriteLine($"{counts.C} {counts.L} {counts.W} {filePath}");
     }
 
     public static void ProcessSingle(string flag, string filePath)
     {
-        var count = new Count(filePath);
+        var counts = new Counts(filePath);
 
         if (flag == "C")
         {
-            Utilities.WriteResult(count, flag, filePath);
+            Utilities.WriteResult(counts, flag, filePath);
             return;
         }
 
@@ -40,8 +40,8 @@ public static class CcwcService
 
         using var reader = new StreamReader(filePath);
         string? line;
-        while ((line = reader.ReadLine()) != null) strategy.Count(line, count);
+        while ((line = reader.ReadLine()) != null) strategy.Count(line, counts);
 
-        Utilities.WriteResult(count, flag, filePath);
+        Utilities.WriteResult(counts, flag, filePath);
     }
 }

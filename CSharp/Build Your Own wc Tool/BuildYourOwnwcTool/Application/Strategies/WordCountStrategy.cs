@@ -5,7 +5,7 @@ namespace CCWC.Application.Strategies;
 
 public class WordCountStrategy : ICountStrategy
 {
-    public void Count(string line, Count counts)
+    public void Count(string line, Counts counts)
     {
         var wordsInFile = line.Split([' ', '\n', '\r', '\t'], StringSplitOptions.RemoveEmptyEntries);
         counts.W += wordsInFile.Length;
