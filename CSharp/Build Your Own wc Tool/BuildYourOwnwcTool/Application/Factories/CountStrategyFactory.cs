@@ -7,7 +7,7 @@ public static class CountStrategyFactory
 {
     public static ICountStrategy GetStrategy(string flag)
     {
-        return flag.ToUpper() switch
+        return flag switch
         {
             "L" => new LineCountStrategy(),
             "W" => new WordCountStrategy(),
