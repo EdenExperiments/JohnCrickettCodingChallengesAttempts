@@ -1,6 +1,6 @@
  🧠 JohnCrickettCodeChallenges
 
-A collection of my personal solutions to coding challenges by [John Crickett](https://johncrickett.dev/), designed to help sharpen my C# skills and problem-solving ability.
+A collection of my personal solutions to coding challenges by [John Crickett](https://www.linkedin.com/in/johncrickett/), designed to help sharpen my C# skills and problem-solving ability.
 
 ---
 
