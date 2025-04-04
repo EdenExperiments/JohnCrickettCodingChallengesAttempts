@@ -1,6 +1,6 @@
  🧠 JohnCrickettCodeChallenges
 
-A collection of my personal solutions to coding challenges by [John Crickett](https://johncrickett.dev/), designed to help sharpen my C# skills and problem-solving ability.
+A collection of my personal solutions to coding challenges by [John Crickett](https://www.linkedin.com/in/johncrickett/), designed to help sharpen my C# skills and problem-solving ability.
 
 ---
 
@@ -29,7 +29,7 @@ The goal is to improve both my **coding ability** and **prompting skills** — I
 
 ## ⚙️ Technologies Used
 
-- C# 11 / .NET 8
+- C# 12 / .NET 8 (min version, later project may be on .NET 10 on stable release)
 - Visual Studio 2022
 - ReSharper
 - Git & GitHub
