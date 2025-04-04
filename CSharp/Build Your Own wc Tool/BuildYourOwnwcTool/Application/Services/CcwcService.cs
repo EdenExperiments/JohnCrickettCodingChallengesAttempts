@@ -1,4 +1,5 @@
 ﻿using CCWC.Application.Factories;
+using CCWC.Application.Strategies;
 using CCWC.Domain.Models;
 using CCWC.Helpers;
 
@@ -9,9 +10,9 @@ public static class CcwcService
     public static void ProcessDefaultFlags(string filePath)
     {
         var count = new Count(filePath);
-        var lineStrategy = CountStrategyFactory.GetStrategy("L");
-        var wordStrategy = CountStrategyFactory.GetStrategy("W");
-        var charStrategy = CountStrategyFactory.GetStrategy("M");
+        var lineStrategy = new LineCountStrategy();
+        var wordStrategy = new WordCountStrategy();
+        var charStrategy = new CharacterCountStrategy();
 
         using var reader = new StreamReader(filePath);
         string? line;
@@ -27,11 +28,11 @@ public static class CcwcService
 
     public static void ProcessSingle(string flag, string filePath)
     {
-        var counts = new Count(filePath);
+        var count = new Count(filePath);
 
-        if (flag.ToUpper() == "C")
+        if (flag == "C")
         {
-            Utilities.WriteResult(counts, flag, filePath);
+            Utilities.WriteResult(count, flag, filePath);
             return;
         }
 
@@ -39,8 +40,8 @@ public static class CcwcService
 
         using var reader = new StreamReader(filePath);
         string? line;
-        while ((line = reader.ReadLine()) != null) strategy.Count(line, counts);
+        while ((line = reader.ReadLine()) != null) strategy.Count(line, count);
 
-        Utilities.WriteResult(counts, flag, filePath);
+        Utilities.WriteResult(count, flag, filePath);
     }
 }
