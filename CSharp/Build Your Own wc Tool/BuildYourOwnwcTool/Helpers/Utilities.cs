@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using CCWC.Domain.Models;
+using System.Reflection;
 
 namespace CCWC.Helpers;
 
@@ -19,15 +20,36 @@ When no option is provided, ccwc prints -c -l -w <file>
 ");
     }
 
+    internal static void WriteSingleFlagError()
+    {
+        Console.WriteLine("When using 1 argument, only --help or a valid <filepath> is a valid use of ccwc");
+    }
+
+    internal static void WriteFileNotExistError(string filePath)
+    {
+        Console.WriteLine($"File at {filePath} does not exist");
+    }
+
+    internal static void WriteGeneralError()
+    {
+        Console.WriteLine(
+            "Incorrect number of arguments given, or incorrect use of flags, use ccwc --help for information");
+    }
+
     internal static bool IsFlagValid(string flag)
     {
-        var type = typeof(Counts);
+        var type = typeof(Count);
 
         var fieldInfo = type.GetProperty(flag.TrimStart('-').ToUpper(), BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
         return fieldInfo != null;
     }
 
-    internal static void WriteResult(Counts counts, string key, string filePath)
+    internal static string NormaliseFlag(string flag)
+    {
+        return flag.TrimStart('-').ToUpper();
+    }
+
+    internal static void WriteResult(Count counts, string key, string filePath)
     {
         var property = counts.GetType().GetProperty(key,
             BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);

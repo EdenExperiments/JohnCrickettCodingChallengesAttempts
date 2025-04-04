@@ -2,7 +2,7 @@
   "profiles": {
     "BuildYourOwnwcTool": {
       "commandName": "Project",
-      "commandLineArgs": "-c test.txt",
+      "commandLineArgs": "test.txt",
       "workingDirectory": "C:\\Users\\Macaulay\\Downloads"
     }
   }
