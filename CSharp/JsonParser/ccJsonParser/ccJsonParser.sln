@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ccJsonParser", "ccJsonParser\ccJsonParser.csproj", "{64716C87-7699-4063-891B-38920310CC84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ccJsonParser.UnitTests", "ccJsonParser.UnitTests\ccJsonParser.UnitTests.csproj", "{AAF124D2-34FA-4A41-B1A6-0EAB075C177A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64716C87-7699-4063-891B-38920310CC84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64716C87-7699-4063-891B-38920310CC84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64716C87-7699-4063-891B-38920310CC84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64716C87-7699-4063-891B-38920310CC84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAF124D2-34FA-4A41-B1A6-0EAB075C177A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAF124D2-34FA-4A41-B1A6-0EAB075C177A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAF124D2-34FA-4A41-B1A6-0EAB075C177A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAF124D2-34FA-4A41-B1A6-0EAB075C177A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C5E0E9B2-360A-42FF-915A-8021EEF61C48}
+	EndGlobalSection
+EndGlobal

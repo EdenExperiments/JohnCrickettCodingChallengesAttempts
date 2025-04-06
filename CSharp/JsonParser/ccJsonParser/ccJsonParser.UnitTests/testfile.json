@@ -1,0 +1,18 @@
+{
+    "name": "John Doe",
+    "age": 30,
+    "isActive": true,
+    "address": {
+        "street": "123 Main St",
+        "city": "Anytown"
+    },
+    "tags": ["developer", "programmer", "coder"],
+    "nullValue": null,
+    "numbers": [1, 2.5, -3.7, 1e3],
+    "nested": {
+        "array": [1, 2, 3],
+        "object": {
+            "key": "value"
+        }
+    }
+} 
