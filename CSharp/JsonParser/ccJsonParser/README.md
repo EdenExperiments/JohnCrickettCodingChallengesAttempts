@@ -8,13 +8,6 @@ A lightweight JSON parser for .NET applications that provides simple deserializa
 - Strongly-typed deserialization
 - Support for complex objects and arrays
 - No external dependencies
-- Built with .NET Standard 2.0 for maximum compatibility
-
-## Installation
-
-```powershell
-dotnet add package ccJsonParser
-```
 
 ## Usage
 
