@@ -16,6 +16,7 @@ namespace HuffmanEncoderDecoder.UnitTests
             var services = new ServiceCollection();
 
             services.AddSingleton<IEncodingService, EncodingService>();
+            services.AddSingleton<IBinaryService, BinaryService>();
 
             return services.BuildServiceProvider();
         }

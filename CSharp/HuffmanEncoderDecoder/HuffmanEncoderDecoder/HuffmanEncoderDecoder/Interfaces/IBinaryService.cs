@@ -8,7 +8,7 @@ namespace HuffmanEncoderDecoder.Interfaces
 {
     public interface IBinaryService
     {
-        public IHuffmanNode BuildBinaryTree();
+        public IHuffmanNode BuildBinaryTree(Dictionary<char, int> frequencyMap);
 
     }
 }

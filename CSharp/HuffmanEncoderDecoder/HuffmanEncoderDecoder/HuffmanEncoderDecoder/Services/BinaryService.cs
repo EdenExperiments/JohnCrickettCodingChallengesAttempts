@@ -1,18 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HuffmanEncoderDecoder.Interfaces;
+﻿using HuffmanEncoderDecoder.Interfaces;
 using HuffmanEncoderDecoder.Models;
 
-namespace HuffmanEncoderDecoder.Services
+namespace HuffmanEncoderDecoder.Services;
+
+public class BinaryService : IBinaryService
 {
-    public class BinaryService : IBinaryService
+    public IHuffmanNode BuildBinaryTree(Dictionary<char, int> frequencyMap)
     {
-        public IHuffmanNode BuildBinaryTree()
+        var heap = new PriorityQueue<HuffmanTree, int>();
+
+        foreach (var (ch, freq) in frequencyMap)
+            heap.Enqueue(new HuffmanTree(ch, freq), freq);
+
+        while (heap.Count > 1)
         {
-            throw new NotImplementedException();
+            var tree1 = heap.Dequeue();
+            var tree2 = heap.Dequeue();
+            var merged = new HuffmanTree(tree1.Root(), tree2.Root());
+
+            heap.Enqueue(merged, merged.Weight());
         }
+
+        return heap.Dequeue().Root()!;
     }
 }
