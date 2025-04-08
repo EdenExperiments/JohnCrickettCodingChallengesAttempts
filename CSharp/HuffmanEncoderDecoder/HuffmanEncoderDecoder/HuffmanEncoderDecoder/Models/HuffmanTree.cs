@@ -2,9 +2,9 @@
 
 namespace HuffmanEncoderDecoder.Models;
 
-public class HuffmanTree : IComparable
+public class HuffmanTree
 {
-    private IHuffmanNode? _root;
+    private readonly IHuffmanNode? _root;
 
     public HuffmanTree(char element, int weight)
     {
@@ -24,14 +24,5 @@ public class HuffmanTree : IComparable
     public int Weight()
     {
         return _root!.Weight();
-    }
-
-    public int CompareTo(object? obj)
-    {
-        HuffmanTree? tree = obj as HuffmanTree;
-
-        if (_root!.Weight() < tree!.Weight())
-            return -1;
-        return _root.Weight() == tree.Weight() ? 0 : 1;
     }
 }
