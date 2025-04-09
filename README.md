@@ -30,7 +30,7 @@ The goal is to improve both my **coding ability** and **prompting skills** — I
 ## ⚙️ Technologies Used
 
 - C# 12 / .NET 8 (min version, later project may be on .NET 10 on stable release)
-- Visual Studio 2022
+- Visual Studio 2022 & Cursor (I specifically state in each readme and commits where i've used Cursor, i'm aiming to do one with and then one without, repeat)
 - ReSharper
 - Git & GitHub
 - (Sometimes) Neovim + CLI tools for experimentation
