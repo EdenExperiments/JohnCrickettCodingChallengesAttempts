@@ -2,7 +2,7 @@
 
 internal class Util
 {
-    internal static bool CheckValidFile(string filepath)
+    internal static bool CheckFileExists(string filepath)
     {
         return File.Exists(filepath);
     }

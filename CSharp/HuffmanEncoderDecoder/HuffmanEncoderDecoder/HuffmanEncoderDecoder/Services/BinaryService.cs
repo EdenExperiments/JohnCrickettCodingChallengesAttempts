@@ -23,4 +23,26 @@ public class BinaryService : IBinaryService
 
         return heap.Dequeue().Root()!;
     }
+
+    public Dictionary<char, string> BuildPrefixTable(IHuffmanNode root)
+    {
+        var prefixTable = new Dictionary<char, string>();
+        TraversePrefixTableRecursive(root, "", prefixTable);
+        return prefixTable;
+    }
+
+    private void TraversePrefixTableRecursive(IHuffmanNode? node, string prefix, Dictionary<char, string> prefixTable)
+    {
+        if (node == null) return;
+
+        // If it's a leaf node
+        if (node.Value() is { } c)
+        {
+            prefixTable[c] = prefix;
+            return;
+        }
+
+        TraversePrefixTableRecursive(node.Left, prefix + "0", prefixTable);
+        TraversePrefixTableRecursive(node.Right, prefix + "1", prefixTable);
+    }
 }

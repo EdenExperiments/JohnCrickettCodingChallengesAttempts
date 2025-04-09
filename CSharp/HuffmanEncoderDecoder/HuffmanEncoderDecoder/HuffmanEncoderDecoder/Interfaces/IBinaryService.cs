@@ -9,6 +9,6 @@ namespace HuffmanEncoderDecoder.Interfaces
     public interface IBinaryService
     {
         public IHuffmanNode BuildBinaryTree(Dictionary<char, int> frequencyMap);
-
+        public Dictionary<char, string> BuildPrefixTable(IHuffmanNode rootNode);
     }
 }

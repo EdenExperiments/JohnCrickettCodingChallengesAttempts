@@ -1,4 +1,5 @@
-﻿using HuffmanEncoderDecoder.Interfaces;
+﻿using System.Text;
+using HuffmanEncoderDecoder.Interfaces;
 
 namespace HuffmanEncoderDecoder.Services;
 
@@ -17,5 +18,22 @@ public class EncodingService : IEncodingService
                 frequencyMap[character] = 1;
 
         return frequencyMap;
+    }
+
+    public string EncodeTextToBitString(string fileText, Dictionary<char, string> prefixTable)
+    {
+        var sb = new StringBuilder();
+
+        foreach (char c in fileText)
+        {
+            if (!prefixTable.TryGetValue(c, out var code))
+            {
+                throw new Exception($"Character {c} not found in prefix table. Error in Encoding or Binary Service");
+            }
+
+            sb.Append(c);
+        }
+
+        return sb.ToString();
     }
 }

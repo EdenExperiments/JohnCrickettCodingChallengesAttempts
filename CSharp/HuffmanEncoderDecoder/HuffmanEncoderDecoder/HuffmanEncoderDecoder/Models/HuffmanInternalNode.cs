@@ -21,6 +21,6 @@ public class HuffmanInternalNode(IHuffmanNode left, IHuffmanNode right) : IHuffm
         return null;
     }
 
-    public IHuffmanNode? Left => null;
-    public IHuffmanNode? Right => null;
+    public IHuffmanNode? Left => left;
+    public IHuffmanNode? Right => right;
 }
