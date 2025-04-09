@@ -2,6 +2,8 @@
 
 A lightweight JSON parser for .NET applications that provides simple deserialization functionality.
 
+#### This project was created heavily with Cursor, I created the project in VS2022, created a file structure and then generated in cursor, debugged and tested in VS
+
 ## Features
 
 - Simple and intuitive API
