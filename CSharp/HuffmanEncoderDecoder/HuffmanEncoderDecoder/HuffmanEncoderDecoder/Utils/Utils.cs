@@ -1,8 +1,8 @@
 ﻿namespace HuffmanEncoderDecoder.Utils;
 
-internal class Util
+internal class Utils
 {
-    internal static bool CheckFileExists(string filepath)
+    internal static bool DoesFileExist(string filepath)
     {
         return File.Exists(filepath);
     }

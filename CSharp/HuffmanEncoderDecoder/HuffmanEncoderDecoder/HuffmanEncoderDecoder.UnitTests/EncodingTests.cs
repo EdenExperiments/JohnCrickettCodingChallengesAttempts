@@ -1,4 +1,5 @@
 ﻿using HuffmanEncoderDecoder.Interfaces;
+using HuffmanEncoderDecoder.Interfaces.Services;
 using HuffmanEncoderDecoder.UnitTests.Fixtures;
 using Microsoft.Extensions.DependencyInjection;
 

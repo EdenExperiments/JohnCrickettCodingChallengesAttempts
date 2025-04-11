@@ -2,7 +2,7 @@
   "profiles": {
     "HuffmanEncoderDecoder": {
       "commandName": "Project",
-      "commandLineArgs": "huffmantest.txt huffmantestencoded.txt",
+      "commandLineArgs": "decode huffmantestencoded.txt huffmantestdecoded.txt\r\n",
       "workingDirectory": "C:\\Users\\Macaulay\\Downloads"
     }
   }

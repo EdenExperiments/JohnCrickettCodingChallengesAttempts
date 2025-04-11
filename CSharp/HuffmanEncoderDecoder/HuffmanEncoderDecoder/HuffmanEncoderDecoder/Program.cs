@@ -1,22 +1,20 @@
-﻿using HuffmanEncoderDecoder.Handlers;
-using HuffmanEncoderDecoder.Interfaces;
-using HuffmanEncoderDecoder.Services;
+﻿using System.CommandLine;
+using HuffmanEncoderDecoder;
+using HuffmanEncoderDecoder.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 
 try
 {
     var services = new ServiceCollection();
-
-    services.AddSingleton<IEncodingService, EncodingService>();
-    services.AddSingleton<IBinaryService, BinaryService>();
-    services.AddSingleton<ArgumentHandler>();
-
+    services.ConfigureAll();
     var serviceProvider = services.BuildServiceProvider();
+
     var argumentHandler = serviceProvider.GetRequiredService<ArgumentHandler>();
 
-    argumentHandler?.HandleArguments(args);
+    await argumentHandler.BuildRootCommand().InvokeAsync(args);
 }
 catch (Exception ex)
 {
+    Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine("Unknown Error Occured: {0}", ex);
 }

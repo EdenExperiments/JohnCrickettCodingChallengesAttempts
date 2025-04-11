@@ -1,5 +1,5 @@
 ﻿using System.Text;
-using HuffmanEncoderDecoder.Interfaces;
+using HuffmanEncoderDecoder.Interfaces.Services;
 
 namespace HuffmanEncoderDecoder.Services;
 
@@ -31,7 +31,7 @@ public class EncodingService : IEncodingService
                 throw new Exception($"Character {c} not found in prefix table. Error in Encoding or Binary Service");
             }
 
-            sb.Append(c);
+            sb.Append(code);
         }
 
         return sb.ToString();

@@ -1,5 +1,7 @@
 ﻿using HuffmanEncoderDecoder.Interfaces;
+using HuffmanEncoderDecoder.Interfaces.Services;
 using HuffmanEncoderDecoder.Models;
+using System.Text;
 
 namespace HuffmanEncoderDecoder.Services;
 
@@ -44,5 +46,60 @@ public class BinaryService : IBinaryService
 
         TraversePrefixTableRecursive(node.Left, prefix + "0", prefixTable);
         TraversePrefixTableRecursive(node.Right, prefix + "1", prefixTable);
+    }
+
+    public byte[] BitStringToBytes(string bitString)
+    {
+        var numBytes = (bitString.Length + 7) / 8;
+        var bytes = new byte[numBytes];
+
+        for (var i = 0; i < bitString.Length; i++)
+            if (bitString[i] == '1')
+            {
+                var byteIndex = i / 8;
+                var bitIndex = 7 - i % 8;
+                bytes[byteIndex] |= (byte)(1 << bitIndex);
+            }
+
+        return bytes;
+    }
+
+    public string BytesToBitString(byte[] bytes, int bitLength)
+    {
+        var sb = new StringBuilder(bitLength);
+
+        for (int i = 0; i < bitLength; i++)
+        {
+            int byteIndex = i / 8;
+            int bitIndex = 7 - (i % 8); // MSB first
+
+            bool bit = (bytes[byteIndex] & (1 << bitIndex)) != 0;
+            sb.Append(bit ? '1' : '0');
+        }
+
+        return sb.ToString();
+    }
+
+
+    public byte[] PrefixTableToBytes(Dictionary<char, string> prefixTable)
+    {
+        var headerBuilder = new StringBuilder();
+        char separator = '\u001E'; // ← safest weird char
+
+        foreach (var kvp in prefixTable)
+        {
+            var escapedChar = kvp.Key switch
+            {
+                '\n' => "\\n",
+                '\r' => "\\r",
+                '\t' => "\\t",
+                ' ' => "␣",
+                '\0' => "\\0",
+                _ => kvp.Key.ToString()
+            };
+            headerBuilder.AppendLine($"{escapedChar}{separator}{kvp.Value}");
+        }
+
+        return Encoding.UTF8.GetBytes(headerBuilder.ToString());
     }
 }

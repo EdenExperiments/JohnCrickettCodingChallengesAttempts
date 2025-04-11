@@ -1,11 +1,11 @@
 ﻿using HuffmanEncoderDecoder.Services;
-using HuffmanEncoderDecoder.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HuffmanEncoderDecoder.Interfaces.Services;
 
 namespace HuffmanEncoderDecoder.UnitTests
 {
