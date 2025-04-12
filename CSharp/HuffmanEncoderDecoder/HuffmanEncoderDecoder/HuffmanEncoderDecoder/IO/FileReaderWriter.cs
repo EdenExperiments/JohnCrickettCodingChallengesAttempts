@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Text;
 
 namespace HuffmanEncoderDecoder.IO;
 
@@ -19,10 +18,10 @@ internal class FileReaderWriter(string inputPath, string outputPath)
         }
         catch (Exception ex)
         {
-            throw new IOException($"Failed to write encoded file at location {outputPath}.");
+            throw new IOException($"Failed to write encoded file at location {outputPath}.", ex);
         }
     }
-    
+
     public string ReadFile()
     {
         try
@@ -33,9 +32,8 @@ internal class FileReaderWriter(string inputPath, string outputPath)
         }
         catch (Exception ex)
         {
-            throw new IOException($"Failed to read file at location {inputPath} from called location.");
+            throw new IOException($"Failed to read file at location {inputPath} from called location.", ex);
         }
-
     }
 
     public (string, int, byte[], int) ReadEncodedFile()
@@ -56,7 +54,7 @@ internal class FileReaderWriter(string inputPath, string outputPath)
         }
         catch (Exception ex)
         {
-            throw new IOException($"Failed to read encoded file at location {inputPath} from called location.");
+            throw new IOException($"Failed to read encoded file at location {inputPath} from called location.", ex);
         }
     }
-} 
+}

@@ -9,7 +9,9 @@ internal class CommandLineHandler(IEncodingHandler encodingHandler, IDecodingHan
     {
         var inputArg = new Argument<string>("input", "Input File Location");
         var outputArg = new Argument<string>("output", "Output File Location");
-        var recursiveOpt = new Option<bool>("--recursive", "Use recursive traversal during encoding"); //included just because i began with a recursive method and later added iterative.
+        var recursiveOpt =
+            new Option<bool>("--recursive",
+                "Use recursive traversal during encoding"); //included just because i began with a recursive method and later added iterative.
 
         var encodeCommand = new Command("encode",
             "Compress a file at the input location and place the encoded version at the output location")

@@ -17,7 +17,9 @@ internal class EncodingHandler(IEncodingService encodingService, IBinaryService 
         var frequencyMap = encodingService.BuildFrequencyMap(fileText);
         var binaryTree = binaryService.BuildBinaryTree(frequencyMap);
 
-        var prefixTable = recursiveOpt ? encodingService.BuildPrefixTableRecursion(binaryTree) : encodingService.BuildPrefixTableIterative(binaryTree);
+        var prefixTable = recursiveOpt
+            ? encodingService.BuildPrefixTableRecursion(binaryTree)
+            : encodingService.BuildPrefixTableIterative(binaryTree);
 
         var bitString = encodingService.EncodeTextToBitString(fileText, prefixTable);
         var encodedText = encodingService.BitStringToBytes(bitString);

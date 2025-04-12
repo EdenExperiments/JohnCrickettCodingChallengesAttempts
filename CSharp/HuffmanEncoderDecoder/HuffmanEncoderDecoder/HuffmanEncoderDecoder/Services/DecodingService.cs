@@ -10,15 +10,17 @@ public class DecodingService : IDecodingService
         try
         {
             var prefixTable = new Dictionary<string, char>();
-            var separator = '\u001E'; 
+            var separator = '\u001E';
 
             foreach (var line in header.Split('\n'))
             {
                 var cleanLine = line.Trim('\r', '\n').Trim();
                 if (string.IsNullOrWhiteSpace(cleanLine)) continue;
-            
+
                 var parts = cleanLine.Split(separator);
-                if (parts.Length != 2) throw new Exception($"Invalid prefix table entry: {line}. Likely \u001E is within the source text.");
+                if (parts.Length != 2)
+                    throw new Exception(
+                        $"Invalid prefix table entry: {line}. Likely \u001E is within the source text.");
                 var character = parts[0];
                 var code = parts[1].Trim();
 
@@ -40,7 +42,7 @@ public class DecodingService : IDecodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred when parsing the prefix table from file.", ex);
+            throw new Exception("Error occurred when parsing the prefix table from file.", ex);
         }
     }
 
@@ -50,14 +52,14 @@ public class DecodingService : IDecodingService
         {
             var result = new StringBuilder();
             var start = 0;
-            var maxCodeLength = prefixTable.Keys.Max(k => k.Length); 
+            var maxCodeLength = prefixTable.Keys.Max(k => k.Length);
 
             while (start < bitString.Length)
             {
                 var matchFound = false;
                 var length = 1;
 
-                while (length <= maxCodeLength && (start + length) <= bitString.Length)
+                while (length <= maxCodeLength && start + length <= bitString.Length)
                 {
                     var slice = bitString.Substring(start, length);
                     if (prefixTable.TryGetValue(slice, out var ch))
@@ -79,7 +81,7 @@ public class DecodingService : IDecodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred when decoding the bit string with the prefix table.", ex);
+            throw new Exception("Error occurred when decoding the bit string with the prefix table.", ex);
         }
     }
 
@@ -102,7 +104,7 @@ public class DecodingService : IDecodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred converting bytes to a bit string.", ex);
+            throw new Exception("Error occurred converting bytes to a bit string.", ex);
         }
     }
 }

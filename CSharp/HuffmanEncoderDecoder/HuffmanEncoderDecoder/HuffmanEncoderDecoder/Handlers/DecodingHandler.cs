@@ -8,14 +8,8 @@ internal class DecodingHandler(IDecodingService decodingService, IBinaryService 
 {
     public void DecodeFile(string inputFilePath, string outputFilePath)
     {
-        if (!Utils.Utils.DoesFileExist(inputFilePath))
-        {
-            throw new ArgumentException("Input file doesn't exist.");
-        }
-        if (Utils.Utils.DoesFileExist(outputFilePath))
-        {
-            throw new ArgumentException("Output file already exists.");
-        }
+        if (!Utils.Utils.DoesFileExist(inputFilePath)) throw new ArgumentException("Input file doesn't exist.");
+        if (Utils.Utils.DoesFileExist(outputFilePath)) throw new ArgumentException("Output file already exists.");
 
         var writerReader = new FileReaderWriter(inputFilePath, outputFilePath);
         var (encodedHeader, headerLength, encodedText, textLength) = writerReader.ReadEncodedFile();
@@ -24,6 +18,5 @@ internal class DecodingHandler(IDecodingService decodingService, IBinaryService 
         var decodedText = decodingService.DecodeBitString(bitString, prefixTable);
 
         File.WriteAllText(outputFilePath, decodedText);
-
     }
 }

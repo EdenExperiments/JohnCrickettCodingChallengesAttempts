@@ -24,7 +24,7 @@ public class EncodingService : IEncodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred when building frequency map.", ex);
+            throw new Exception("Error occurred when building frequency map.", ex);
         }
     }
 
@@ -38,20 +38,8 @@ public class EncodingService : IEncodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred when building prefix table via recursion.", ex);
+            throw new Exception("Error occurred when building prefix table via recursion.", ex);
         }
-    }
-
-    private void TraversePrefixTableRecursive(IHuffmanNode node, string prefix, Dictionary<char, string> prefixTable)
-    {
-        if (node.Value() is { } c)
-        {
-            prefixTable[c] = prefix;
-            return;
-        }
-
-        TraversePrefixTableRecursive(node.Left!, prefix + "0", prefixTable);
-        TraversePrefixTableRecursive(node.Right!, prefix + "1", prefixTable);
     }
 
     public Dictionary<char, string> BuildPrefixTableIterative(IHuffmanNode root)
@@ -81,7 +69,7 @@ public class EncodingService : IEncodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred building prefix table via iteration.", ex);
+            throw new Exception("Error occurred building prefix table via iteration.", ex);
         }
     }
 
@@ -104,15 +92,17 @@ public class EncodingService : IEncodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred converting bit string to bytes.", ex);
+            throw new Exception("Error occurred converting bit string to bytes.", ex);
         }
     }
+
     public byte[] PrefixTableToBytes(Dictionary<char, string> prefixTable)
     {
         try
         {
             var headerBuilder = new StringBuilder();
-            var separator = '\u001E'; //todo: I need to make this whole seperator system better, although this is an uncommon character, it will still break if within a document
+            var
+                separator = '\u001E'; //todo: I need to make this whole seperator system better, although this is an uncommon character, it will still break if within a document
 
             foreach (var kvp in prefixTable)
             {
@@ -132,7 +122,7 @@ public class EncodingService : IEncodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred converting prefix table to byte array.", ex);
+            throw new Exception("Error occurred converting prefix table to byte array.", ex);
         }
     }
 
@@ -145,7 +135,8 @@ public class EncodingService : IEncodingService
             foreach (var c in fileText)
             {
                 if (!prefixTable.TryGetValue(c, out var code))
-                    throw new Exception($"Character {c} not found in prefix table. Error in Encoding or Binary Service");
+                    throw new Exception(
+                        $"Character {c} not found in prefix table. Error in Encoding or Binary Service");
 
                 sb.Append(code);
             }
@@ -154,7 +145,19 @@ public class EncodingService : IEncodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred when encoding fileText with prefix table.", ex);
+            throw new Exception("Error occurred when encoding fileText with prefix table.", ex);
         }
+    }
+
+    private void TraversePrefixTableRecursive(IHuffmanNode node, string prefix, Dictionary<char, string> prefixTable)
+    {
+        if (node.Value() is { } c)
+        {
+            prefixTable[c] = prefix;
+            return;
+        }
+
+        TraversePrefixTableRecursive(node.Left!, prefix + "0", prefixTable);
+        TraversePrefixTableRecursive(node.Right!, prefix + "1", prefixTable);
     }
 }

@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using HuffmanEncoderDecoder.Interfaces;
+﻿using HuffmanEncoderDecoder.Interfaces;
 using HuffmanEncoderDecoder.Interfaces.Services;
 using HuffmanEncoderDecoder.Models;
-using System.Text;
 
 namespace HuffmanEncoderDecoder.Services;
 
@@ -30,7 +28,7 @@ public class BinaryService : IBinaryService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred when building Binary Tree from frequency map", ex);
+            throw new Exception("Error occurred when building Binary Tree from frequency map", ex);
         }
     }
 }
