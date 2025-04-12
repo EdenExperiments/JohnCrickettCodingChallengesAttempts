@@ -84,7 +84,7 @@ public class BinaryService : IBinaryService
     public byte[] PrefixTableToBytes(Dictionary<char, string> prefixTable)
     {
         var headerBuilder = new StringBuilder();
-        char separator = '\u001E'; // ← safest weird char
+        char separator = '\u001E'; //todo: I need to make this whole seperator system better, although this is an extremely uncommon character, it will still break if within a document
 
         foreach (var kvp in prefixTable)
         {
