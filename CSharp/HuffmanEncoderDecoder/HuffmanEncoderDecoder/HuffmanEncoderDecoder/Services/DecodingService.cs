@@ -7,77 +7,102 @@ public class DecodingService : IDecodingService
 {
     public Dictionary<string, char> ParsePrefixTable(string header)
     {
-        var prefixTable = new Dictionary<string, char>();
-        char separator = '\u001E'; // ← safest weird char
-
-        foreach (var line in header.Split('\n'))
+        try
         {
-            var cleanLine = line.Trim('\r', '\n').Trim(); // strips weird line endings
-            if (string.IsNullOrWhiteSpace(cleanLine)) continue;
-            
-            var parts = cleanLine.Split(separator);
-            if (parts.Length != 2) throw new Exception($"Invalid prefix table entry: {line}");
-            var character = parts[0];
-            var code = parts[1].Trim();
+            var prefixTable = new Dictionary<string, char>();
+            var separator = '\u001E'; 
 
-            // Convert the escaped character back
-            var decodedChar = character switch
+            foreach (var line in header.Split('\n'))
             {
-                "\\n" => '\n',
-                "\\r" => '\r',
-                "\\t" => '\t',
-                "␣" => ' ',
-                "\\0" => '\0',
-                _ => character[0]
-            };
+                var cleanLine = line.Trim('\r', '\n').Trim();
+                if (string.IsNullOrWhiteSpace(cleanLine)) continue;
+            
+                var parts = cleanLine.Split(separator);
+                if (parts.Length != 2) throw new Exception($"Invalid prefix table entry: {line}. Likely \u001E is within the source text.");
+                var character = parts[0];
+                var code = parts[1].Trim();
 
-            prefixTable[code] = decodedChar;
+                // Convert the escaped character back
+                var decodedChar = character switch
+                {
+                    "\\n" => '\n',
+                    "\\r" => '\r',
+                    "\\t" => '\t',
+                    "␣" => ' ',
+                    "\\0" => '\0',
+                    _ => character[0]
+                };
+
+                prefixTable[code] = decodedChar;
+            }
+
+            return prefixTable;
         }
-
-        return prefixTable;
-    }
-
-    public string FormBitString(Dictionary<string, char> prefixTable, string encodedString)
-    {
-        throw new NotImplementedException();
+        catch (Exception ex)
+        {
+            throw new Exception($"Error occurred when parsing the prefix table from file. {ex}");
+        }
     }
 
     public string DecodeBitString(string bitString, Dictionary<string, char> prefixTable)
     {
-        var result = new StringBuilder();
-        int start = 0;
-        int maxCodeLength = prefixTable.Keys.Max(k => k.Length); // Safety limit
-
-        while (start < bitString.Length)
+        try
         {
-            bool matchFound = false;
-            int length = 1;
+            var result = new StringBuilder();
+            var start = 0;
+            var maxCodeLength = prefixTable.Keys.Max(k => k.Length); 
 
-            while (length <= maxCodeLength && (start + length) <= bitString.Length)
+            while (start < bitString.Length)
             {
-                var slice = bitString.Substring(start, length);
-                if (prefixTable.TryGetValue(slice, out char ch))
+                var matchFound = false;
+                var length = 1;
+
+                while (length <= maxCodeLength && (start + length) <= bitString.Length)
                 {
-                    result.Append(ch);
-                    start += length;
-                    matchFound = true;
-                    break;
+                    var slice = bitString.Substring(start, length);
+                    if (prefixTable.TryGetValue(slice, out var ch))
+                    {
+                        result.Append(ch);
+                        start += length;
+                        matchFound = true;
+                        break;
+                    }
+
+                    length++;
                 }
 
-                length++;
+                if (matchFound) continue;
+                throw new Exception($"No match found for bit stream starting at index {start}.");
             }
 
-            if (!matchFound)
-            {
-                Console.WriteLine($"[ERROR] No match found for bitstream starting at index {start}. Aborting.");
-                break;
-            }
+            return result.ToString();
         }
-
-        Console.WriteLine($"[INFO] Total decoded characters: {result.Length}");
-
-        return result.ToString();
+        catch (Exception ex)
+        {
+            throw new Exception($"Error occurred when decoding the bit string with the prefix table. {ex}");
+        }
     }
 
+    public string BytesToBitString(byte[] bytes, int bitLength)
+    {
+        try
+        {
+            var sb = new StringBuilder(bitLength);
 
+            for (var i = 0; i < bitLength; i++)
+            {
+                var byteIndex = i / 8;
+                var bitIndex = 7 - i % 8;
+
+                var bit = (bytes[byteIndex] & (1 << bitIndex)) != 0;
+                sb.Append(bit ? '1' : '0');
+            }
+
+            return sb.ToString();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Error occurred converting bytes to a bit string. {ex}");
+        }
+    }
 }

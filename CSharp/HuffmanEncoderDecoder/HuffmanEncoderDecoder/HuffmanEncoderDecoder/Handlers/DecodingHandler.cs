@@ -20,7 +20,7 @@ internal class DecodingHandler(IDecodingService decodingService, IBinaryService 
         var writerReader = new FileReaderWriter(inputFilePath, outputFilePath);
         var (encodedHeader, headerLength, encodedText, textLength) = writerReader.ReadEncodedFile();
         var prefixTable = decodingService.ParsePrefixTable(encodedHeader);
-        var bitString = binaryService.BytesToBitString(encodedText, textLength);
+        var bitString = decodingService.BytesToBitString(encodedText, textLength);
         var decodedText = decodingService.DecodeBitString(bitString, prefixTable);
 
         File.WriteAllText(outputFilePath, decodedText);
