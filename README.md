@@ -17,20 +17,19 @@ Each project focuses on both completing the problem and reflecting on better way
 
 ## 🤖 Why I Use AI
 
-AI (like ChatGPT or GitHub Copilot) plays a support role in my process:
-- ✅ Used for exploring concepts or unfamiliar patterns
-- ✅ Assists with generating project README files
-- ✅ Offers refactoring suggestions once a challenge is complete
-- ❌ **Not** used to solve challenges directly or bypass the thinking process
+AI (like ChatGPT or GitHub Copilot) plays a support role in my workflow. I alternate between two challenge approaches:
 
-The goal is to improve both my **coding ability** and **prompting skills** — I see AI as a powerful productivity companion, not a replacement for learning.
+- 🧠 Manual-first challenges – I solve these without Cursor generation, though I may still use ChatGPT to explore concepts or get refactoring suggestions after I've finished. These are about deepening my coding ability and building pattern recognition the hard way.
+- ✍️ AI-assisted challenges – I use Cursor generation here to improve my prompting and code review skills. The goal is to get better at steering AI effectively and critically evaluating what it outputs.
+
+AI is a productivity companion, will likely considerably improve in the future as it improves at keeping context of codebases with larger tokens and should be something developers learn to become more productive with.
 
 ---
 
 ## ⚙️ Technologies Used
 
 - C# 12 / .NET 8 (min version, later project may be on .NET 10 on stable release)
-- Visual Studio 2022
+- Visual Studio 2022 & Cursor (I specifically state in each readme and commits where i've used Cursor, i'm aiming to do one with and then one without, repeat)
 - ReSharper
 - Git & GitHub
 - (Sometimes) Neovim + CLI tools for experimentation
