@@ -40,7 +40,7 @@ public class DecodingService : IDecodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred when parsing the prefix table from file. {ex}");
+            throw new Exception($"Error occurred when parsing the prefix table from file.", ex);
         }
     }
 
@@ -79,7 +79,7 @@ public class DecodingService : IDecodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred when decoding the bit string with the prefix table. {ex}");
+            throw new Exception($"Error occurred when decoding the bit string with the prefix table.", ex);
         }
     }
 
@@ -102,7 +102,7 @@ public class DecodingService : IDecodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred converting bytes to a bit string. {ex}");
+            throw new Exception($"Error occurred converting bytes to a bit string.", ex);
         }
     }
 }

@@ -2,5 +2,5 @@
 
 public interface IEncodingHandler
 {
-    public void Encode(string inputFilePath, string outputFilePath);
+    public void Encode(string inputFilePath, string outputFilePath, bool recursiveOpt);
 }

@@ -9,12 +9,11 @@ try
     services.ConfigureAll();
     var serviceProvider = services.BuildServiceProvider();
 
-    var argumentHandler = serviceProvider.GetRequiredService<ArgumentHandler>();
-
-    await argumentHandler.BuildRootCommand().InvokeAsync(args);
+    var commandLineHandler = serviceProvider.GetRequiredService<CommandLineHandler>();
+    await commandLineHandler.BuildRootCommand().InvokeAsync(args);
 }
 catch (Exception ex)
 {
     Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine("Unknown Error Occured: {0}", ex);
+    Console.WriteLine("Unknown Error Occurred: {0}", ex);
 }

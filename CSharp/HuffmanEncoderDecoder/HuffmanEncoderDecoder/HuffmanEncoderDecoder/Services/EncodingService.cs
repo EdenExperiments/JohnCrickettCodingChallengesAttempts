@@ -24,7 +24,7 @@ public class EncodingService : IEncodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred when building frequency map. {ex}");
+            throw new Exception($"Error occurred when building frequency map.", ex);
         }
     }
 
@@ -38,7 +38,7 @@ public class EncodingService : IEncodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred when building prefix table via recursion. {ex}");
+            throw new Exception($"Error occurred when building prefix table via recursion.", ex);
         }
     }
 
@@ -81,7 +81,7 @@ public class EncodingService : IEncodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred building prefix table via iteration. {ex}");
+            throw new Exception($"Error occurred building prefix table via iteration.", ex);
         }
     }
 
@@ -104,7 +104,7 @@ public class EncodingService : IEncodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred converting bit string to bytes. {ex}");
+            throw new Exception($"Error occurred converting bit string to bytes.", ex);
         }
     }
     public byte[] PrefixTableToBytes(Dictionary<char, string> prefixTable)
@@ -132,7 +132,7 @@ public class EncodingService : IEncodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred converting prefix table to byte array. {ex}");
+            throw new Exception($"Error occurred converting prefix table to byte array.", ex);
         }
     }
 
@@ -154,7 +154,7 @@ public class EncodingService : IEncodingService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred when encoding fileText with prefix table. {ex}");
+            throw new Exception($"Error occurred when encoding fileText with prefix table.", ex);
         }
     }
 }

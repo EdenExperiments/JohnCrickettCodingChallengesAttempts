@@ -30,7 +30,7 @@ public class BinaryService : IBinaryService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error occurred when building Binary Tree from frequency map. {ex}");
+            throw new Exception($"Error occurred when building Binary Tree from frequency map", ex);
         }
     }
 }
