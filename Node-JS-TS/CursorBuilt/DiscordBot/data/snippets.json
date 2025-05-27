@@ -1,0 +1,12 @@
+{
+  "629273364543963147": {
+    "username": "macaulay9393",
+    "snippets": {
+      "hello word": {
+        "code": "Console.WriteLine(\"Hello World\");",
+        "language": "C#",
+        "createdAt": "2025-05-27T19:33:42.418Z"
+      }
+    }
+  }
+}
