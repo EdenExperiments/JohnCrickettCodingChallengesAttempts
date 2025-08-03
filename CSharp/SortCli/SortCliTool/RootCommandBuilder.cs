@@ -19,7 +19,7 @@ public class RootCommandBuilder
             DefaultValueFactory = parseResult => "quicksort"  
         };
 
-        algorithm.AcceptOnlyFromAmong("quicksort", "radix", "mergesort");
+        algorithm.AcceptOnlyFromAmong("quicksort", "radix", "mergesort", "random");
 
 
         var rootCommand = new RootCommand("Sort Lines from a file.")

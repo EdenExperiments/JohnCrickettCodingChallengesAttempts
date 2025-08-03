@@ -1,4 +1,5 @@
 using SortCliTool.SortingAlgorithms;
+using Random = SortCliTool.SortingAlgorithms.Random;
 
 namespace SortCliTool;
 
@@ -11,6 +12,7 @@ public static class AlgorithmFactory
             "quicksort" => new QuickSort(),
             "radix" => new Radix(),
             "mergesort" => new Merge(),
+            "random" => new Random(),
             _ => throw new Exception("Algorithm not found")
         };
     }
